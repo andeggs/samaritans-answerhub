@@ -1,0 +1,162 @@
+<!DOCTYPE HTML>
+<#import "/spring.ftl" as spring />
+<#import "macros/security.ftl" as security />
+<#import "/macros/thub.ftl" as teamhub />
+
+<#assign pack=JspTaglibs["/WEB-INF/teamhubpacktag.tld"] />
+
+
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!-- Consider adding a manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en" xmlns="http://www.w3.org/1999/xhtml"> <!--<![endif]-->
+
+<#include "base-head.ftl" />
+
+<body>
+<@teamhub.widgets "system.header/before" />
+
+<div id="not-footer">
+<#if Request.showMainNavbar>
+    <#include "includes/main-navbar.ftl" />
+</#if>
+
+<@teamhub.widgets "postHeaderPanel" />
+<#if page.properties['page.postHeaderWidgetsPath']??>
+    <#assign postHeaderWidgetsPath = page.properties['page.postHeaderWidgetsPath'] />
+    <@teamhub.widgets postHeaderWidgetsPath />
+</#if>
+
+    <section id="middle">
+
+        <div class="main">
+
+            <div class="main-inner">
+
+                <div class="container">
+                    <div class="row">
+                    <#if !page.properties["page.fullWidth"]??>
+                        <#list Request.midSectionOrder?split(",") as section>
+                            <#if Request["show" + section?cap_first]>
+                                <div class="span${Request[section+"Width"]} ${section}">
+                                    <#if section == "mainContent" >
+                                        <#include "includes/flash-messages.ftl"/>
+                                        <@teamhub.widgets "preMainContentPanel" />
+                                        <#if page.properties['page.preMainContentWidgets']??>
+                                        <@teamhub.widgets page.properties['page.preMainContentWidgets'] />
+                                        </#if>
+
+                                        ${body}
+
+                                        <@teamhub.widgets "postMainContentPanel" />
+                                        <#if page.properties['page.postMainContentWidgets']??>
+                                        <@teamhub.widgets page.properties['page.postMainContentWidgets'] />
+                                        </#if>
+                                    <#else>
+                                        <@teamhub.widgets section+ "TopPanel" />
+                                        <#if page.properties['page.' + section + 'Top']??>
+                                        ${page.properties['page.' + section + 'Top']}
+                                        </#if>
+                                        <#if page.properties['page.' + section + 'Widgets']??>
+                                            <@teamhub.widgets page.properties['page.' + section + 'Widgets'] />
+                                        </#if>
+
+                                        <@teamhub.widgets section+ "BottomPanel" />
+                                        <#if page.properties['page.' + section + 'Bottom']??>
+                                        ${page.properties['page.' + section + 'Bottom']}
+                                        </#if>
+                                    </#if>
+                                </div>
+                            </#if>
+                        </#list>
+                    <#else>
+                        <div class="span12">
+                            <@teamhub.widgets "preMainContentPanel" />
+                            <#if page.properties['page.preMainContentWidgets']??>
+                                <@teamhub.widgets page.properties['page.preMainContentWidgets'] />
+                            </#if>
+                                ${body}
+                                <@teamhub.widgets "preMainContentPanel" />
+                            <#if page.properties['page.postMainContentWidgets']??>
+                                <@teamhub.widgets page.properties['page.postMainContentWidgets'] />
+                            </#if>
+                        </div>
+                    </#if>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+    <div class="push"></div>
+</div>
+
+<#if Request.showFooter>
+    <#include "includes/footer.ftl" />
+</#if>
+
+<#include "includes/off-canvas-nav.ftl" />
+<#include "nodes/user-popover.ftl" />
+<#include "nodes/topic-popover.ftl" />
+<#include "nodes/badge-popover.ftl" />
+<#include "scripts/search_autocomplete.ftl"/>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $bottom = $("#bottom");
+        $notFooter = $("#not-footer");
+        $push = $(".push");
+        $push.css("height", $bottom.outerHeight() + "px");
+        $notFooter.css("margin-bottom", "-" + $bottom.outerHeight() + "px");
+
+        $(".dummy-navbar-link").sidr();
+
+        $(".search-button").click(function(){
+            $(".navbar-search").submit();
+        });
+
+        $(".off-canvas-nav-btn").on("click", function(){
+            $.sidr(
+                "open",
+                "sidr",
+                function(){
+                    $(document.body).prepend("<div class='cover'></div>");
+                    $(".cover").fadeIn().on("click", function(){
+                        $.sidr('close', 'sidr');
+                        $(this).remove();
+                    });
+                }
+            );
+        });
+    });
+
+
+    $(".answer-body pre").addClass("prettyprint").addClass("linenums");
+    $(".node-body pre").addClass("prettyprint").addClass("linenums");
+    $(".question-body pre").addClass("prettyprint").addClass("linenums");
+    prettyPrint();
+
+</script>
+<#assign analyticsCode><@teamhub.setting "site.analyticsCode"/></#assign>
+<#if analyticsCode?? && analyticsCode?has_content>
+<script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', '${analyticsCode}']);
+    _gaq.push(['_trackPageview']);
+
+    (function () {
+        var ga = document.createElement('script');
+        ga.type = 'text/javascript';
+        ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ga, s);
+    })();
+</script>
+</#if>
+</body>

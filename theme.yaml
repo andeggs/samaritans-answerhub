@@ -1,0 +1,21 @@
+Theme:
+  Name: Samaritans
+  Mode: questions
+  TopicsMode: questions
+  Description: The official TeamHub theme.
+  Author: DZone, Inc.
+  Plugins: [dzone.dzone-thub-theme-config,dzone.dzone-ahawards,dzone.dzone-osqaawards,dzone.dzone-robotstxt,dzone.dzone-lucene-search,dzone.dzone-customheaderfooter]
+  Version: 1.0-beta
+
+Rules:
+  - Controller: index
+    MapTo: /
+
+Variations:
+  - Path: /nodes/includes/control_bar.ftl
+    Name: Control Bar
+    Default: default
+  - Path: /nodes/includes/node_left.ftl
+    Name: Node Left
+    Default: default
+

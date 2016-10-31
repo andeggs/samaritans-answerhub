@@ -1,0 +1,1 @@
+<@cTypes.forType(hit.result.type).include path="/search/items/node.ftl" />

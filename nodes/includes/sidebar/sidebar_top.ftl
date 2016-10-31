@@ -1,0 +1,1 @@
+<@content.include path="/nodes/includes/sidebar_top.ftl" />

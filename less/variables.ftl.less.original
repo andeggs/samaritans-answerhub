@@ -1,0 +1,340 @@
+<#import "/spring.ftl" as spring />
+<#import "/macros/thub.ftl" as teamhub />
+
+// Variables.less
+// Variables to customize the look and feel of Bootstrap
+// -----------------------------------------------------
+
+
+// GLOBAL VALUES
+// --------------------------------------------------
+
+
+// Grays
+// -------------------------
+@black:                 <@teamhub.setting "plugin.lcl.baseColors.grays.black" />;          //#000
+@grayDarker:            <@teamhub.setting "plugin.lcl.baseColors.grays.greyDarker" />;     //#222
+@grayDark:              <@teamhub.setting "plugin.lcl.baseColors.grays.grayDark" />;       //#333;
+@gray:                  <@teamhub.setting "plugin.lcl.baseColors.grays.gray" />;           //#555;
+@grayLight:             <@teamhub.setting "plugin.lcl.baseColors.grays.grayLight" />;      //#999;
+@grayLighter:           <@teamhub.setting "plugin.lcl.baseColors.grays.grayLighter" />;    //#eee;
+@white:                 <@teamhub.setting "plugin.lcl.baseColors.grays.white" />;          //#fff;
+
+
+// Accent colors
+// -------------------------
+@blue:                  <@teamhub.setting "plugin.lcl.baseColors.accentColors.blue" />;           //#4080DC;
+@blueDark:              <@teamhub.setting "plugin.lcl.baseColors.accentColors.blueDark" />;       //#0064cd;
+@green:                 <@teamhub.setting "plugin.lcl.baseColors.accentColors.green" />;          //#46a546;
+@red:                   <@teamhub.setting "plugin.lcl.baseColors.accentColors.red" />;            //#9d261d;
+@yellow:                <@teamhub.setting "plugin.lcl.baseColors.accentColors.yellow" />;         //#ffc40d;
+@orange:                <@teamhub.setting "plugin.lcl.baseColors.accentColors.orange" />;         //#f89406;
+@pink:                  <@teamhub.setting "plugin.lcl.baseColors.accentColors.pink" />;           //#c3325f;
+@purple:                <@teamhub.setting "plugin.lcl.baseColors.accentColors.purple" />;         //#7a43b6;
+
+
+// Scaffolding
+// -------------------------
+@bodyBackground:        <@teamhub.setting "plugin.lcl.general.body.bodyBackground" />;  //#e9e8dd;
+@textColor:             <@teamhub.setting "plugin.lcl.text.general.textColor" />;       //@grayDark;
+
+
+// Links
+// -------------------------
+@linkColor:             <@teamhub.setting "plugin.lcl.text.links.linkColor" />;       //@blue;
+@linkColorHover:        <@teamhub.setting "plugin.lcl.text.links.linkColorHover" />;  //darken(@linkColor, 15%);
+
+
+// Typography
+// -------------------------
+@sansFontFamily:        <@teamhub.setting "plugin.lcl.text.fonts.sansFontFamily" />;  //"Open Sans","Helvetica Neue", Helvetica, Arial, sans-serif;
+@serifFontFamily:       <@teamhub.setting "plugin.lcl.text.fonts.serifFontFamily" />; //Georgia, "Times New Roman", Times, serif;
+@monoFontFamily:        <@teamhub.setting "plugin.lcl.text.fonts.monoFontFamily" />;  //Menlo, Monaco, Consolas, "Courier New", monospace;
+
+@baseFontSize:          <@teamhub.setting "plugin.lcl.text.fonts.baseFontSize" />;    //14px;
+@baseFontFamily:        <@teamhub.setting "plugin.lcl.text.fonts.baseFontFamily" />;  //@sansFontFamily;
+@baseLineHeight:        <@teamhub.setting "plugin.lcl.text.fonts.baseLineHeight" />;  //20px;
+@altFontFamily:         <@teamhub.setting "plugin.lcl.text.fonts.altFontFamily" />;   //@serifFontFamily;
+
+@headingsFontFamily:    <@teamhub.setting "plugin.lcl.text.fonts.headingsFontFamily" />; //inherit; // empty to use BS default, @baseFontFamily
+@headingsFontWeight:    <@teamhub.setting "plugin.lcl.text.fonts.headingsFontWeight" />; //bold;    // instead of browser default, bold
+@headingsColor:         <@teamhub.setting "plugin.lcl.text.fonts.headingsColor" />;      //inherit; // empty to use BS default, @textColor
+
+
+// Tables
+// -------------------------
+@tableBackground:                   <@teamhub.setting "plugin.lcl.components.tables.tableBackground" />;       //transparent; // overall background-color
+@tableBackgroundAccent:             <@teamhub.setting "plugin.lcl.components.tables.tableBackgroundAccent" />; //#f9f9f9; // for striping
+@tableBackgroundHover:              <@teamhub.setting "plugin.lcl.components.tables.tableBackgroundHover" />;  //#f5f5f5; // for hover
+@tableBorder:                       <@teamhub.setting "plugin.lcl.components.tables.tableBorder" />;           //#ddd; // table and cell border
+
+
+// Buttons
+// -------------------------
+@btnBackground:                     <@teamhub.setting "plugin.lcl.inputs.buttons.btnBackground" />;         //@white;
+@btnBackgroundHighlight:            <@teamhub.setting "plugin.lcl.inputs.buttons.btnBackgroundHighlight" />;//darken(@white, 10%);
+@btnBorder:                         <@teamhub.setting "plugin.lcl.inputs.buttons.btnBorder" />;             //#BBB;
+
+@btnPrimaryBackground:              <@teamhub.setting "plugin.lcl.inputs.buttons.btnPrimaryBackground" />;  //@linkColor;
+@btnPrimaryBackgroundHighlight:     <@teamhub.setting "plugin.lcl.inputs.buttons.btnPrimaryBackgroundHighlight" />; //spin(@btnPrimaryBackground, 15%);
+
+@btnInfoBackground:                 <@teamhub.setting "plugin.lcl.inputs.buttons.btnInfoBackground" />;             //#5bc0de;
+@btnInfoBackgroundHighlight:        <@teamhub.setting "plugin.lcl.inputs.buttons.btnInfoBackgroundHighlight" />;    //#2f96b4;
+
+@btnSuccessBackground:              <@teamhub.setting "plugin.lcl.inputs.buttons.btnSuccessBackground" />;          //#62c462;
+@btnSuccessBackgroundHighlight:     <@teamhub.setting "plugin.lcl.inputs.buttons.btnSuccessBackgroundHighlight" />; //#51a351;
+
+@btnWarningBackground:              <@teamhub.setting "plugin.lcl.inputs.buttons.btnWarningBackground" />;          //lighten(@orange, 15%);
+@btnWarningBackgroundHighlight:     <@teamhub.setting "plugin.lcl.inputs.buttons.btnWarningBackgroundHighlight" />; //@orange;
+
+@btnDangerBackground:               <@teamhub.setting "plugin.lcl.inputs.buttons.btnDangerBackground" />;           //#ee5f5b;
+@btnDangerBackgroundHighlight:      <@teamhub.setting "plugin.lcl.inputs.buttons.btnDangerBachgroundHighlight" />;  //#bd362f;
+
+@btnInverseBackground:              <@teamhub.setting "plugin.lcl.inputs.buttons.btnInverseBackground" />;          //#444;
+@btnInverseBackgroundHighlight:     <@teamhub.setting "plugin.lcl.inputs.buttons.btnInverseBackgroundHighlight" />; //@grayDarker;
+
+
+// Forms
+// -------------------------
+@inputBackground:               <@teamhub.setting "plugin.lcl.inputs.inputs.inputBackground" />;        //@white;
+@inputBorder:                   <@teamhub.setting "plugin.lcl.inputs.inputs.inputBorder" />;            //#ccc;
+@inputBorderRadius:             <@teamhub.setting "plugin.lcl.inputs.inputs.inputBorderRadius" />;      //3px;
+@inputDisabledBackground:       <@teamhub.setting "plugin.lcl.inputs.inputs.inputDisabledBackground" />;//@grayLighter;
+@formActionsBackground:         <@teamhub.setting "plugin.lcl.inputs.inputs.formActionsBackground" />;  //#f5f5f5;
+
+// Dropdowns
+// -------------------------
+@dropdownBackground:            <@teamhub.setting "plugin.lcl.inputs.dropdowns.dropdownBackground" />;          //@white;
+@dropdownBorder:                <@teamhub.setting "plugin.lcl.inputs.dropdowns.dropdownBorder" />;              //rgba(0,0,0,.2);
+@dropdownDividerTop:            <@teamhub.setting "plugin.lcl.inputs.dropdowns.dropdownDividerTop" />;          //#e5e5e5;
+@dropdownDividerBottom:         <@teamhub.setting "plugin.lcl.inputs.dropdowns.dropdownDividerBottom" />;       //@white;
+
+@dropdownLinkColor:             <@teamhub.setting "plugin.lcl.inputs.dropdowns.dropdownLinkColor" />;           //@grayDark;
+@dropdownLinkColorHover:        <@teamhub.setting "plugin.lcl.inputs.dropdowns.dropdownLinkColorHover" />;      //@white;
+
+@dropdownLinkBackgroundActive:  <@teamhub.setting "plugin.lcl.inputs.dropdowns.dropdownLinkBackgroundActive" />;//@linkColor;
+@dropdownLinkBackgroundHover:   <@teamhub.setting "plugin.lcl.inputs.dropdowns.dropdownLinkBackgroundHover" />; //@dropdownLinkBackgroundActive;
+
+
+// COMPONENT VARIABLES
+// --------------------------------------------------
+
+// Z-index master list
+// -------------------------
+// Used for a bird's eye view of components dependent on the z-axis
+// Try to avoid customizing these :)
+@zindexDropdown:          <@teamhub.setting "plugin.lcl.general.zIndices.zindexDropdown" />;     //1000;
+@zindexPopover:           <@teamhub.setting "plugin.lcl.general.zIndices.zindexPopover" />;      //1010;
+@zindexTooltip:           <@teamhub.setting "plugin.lcl.general.zIndices.zindexTooltip" />;      //1020;
+@zindexFixedNavbar:       <@teamhub.setting "plugin.lcl.general.zIndices.zindexFixedNavbar" />;  //1030;
+@zindexModalBackdrop:     <@teamhub.setting "plugin.lcl.general.zIndices.zindexModelBackdrop" />;//1040;
+@zindexModal:             <@teamhub.setting "plugin.lcl.general.zIndices.zindexModel" />;        //1050;
+
+
+// Sprite icons path
+// -------------------------
+@iconSpritePath:          <@teamhub.setting "plugin.lcl.general.icons.iconSpritePath" />;      //"../img/glyphicons-halflings.png";
+@iconWhiteSpritePath:     <@teamhub.setting "plugin.lcl.general.icons.iconWhiteSpritePath" />; //"../img/glyphicons-halflings-white.png";
+
+
+// Input placeholder text color
+// -------------------------
+@placeholderText:         <@teamhub.setting "plugin.lcl.inputs.inputs.placeholderText" />; //@grayLight;
+
+
+// Hr border color
+// -------------------------
+@hrBorder:                <@teamhub.setting "plugin.lcl.components.general.hrBorder" />; //@grayLighter;
+
+
+// Horizontal forms & lists
+// -------------------------
+@horizontalComponentOffset:       <@teamhub.setting "plugin.lcl.components.general.horizontalComponentOffset" />; //180px;
+
+
+// Wells
+// -------------------------
+@wellBackground:                  <@teamhub.setting "plugin.lcl.components.general.wellBackground" />; //#f5f5f5;
+
+
+// Navbar
+// -------------------------
+@navbarCollapseWidth:             <@teamhub.setting "plugin.lcl.components.navbar.navbarCollapseWidth" />; //979px;
+
+@navbarHeight:                    <@teamhub.setting "plugin.lcl.components.navbar.navbarHeight" />;                //40px;
+@navbarBackgroundHighlight:       <@teamhub.setting "plugin.lcl.components.navbar.navbarBackgroundHighlight" />;   //#ffffff;
+@navbarBackground:                <@teamhub.setting "plugin.lcl.components.navbar.navbarBackground" />;            //darken(@navbarBackgroundHighlight, 5%);
+@navbarBorder:                    <@teamhub.setting "plugin.lcl.components.navbar.navbarBorder" />;                //darken(@navbarBackground, 12%);
+
+@navbarText:                      <@teamhub.setting "plugin.lcl.components.navbar.navbarText" />;                  //#777;
+@navbarLinkColor:                 <@teamhub.setting "plugin.lcl.components.navbar.navbarLinkColor" />;             //#777;
+@navbarLinkColorHover:            <@teamhub.setting "plugin.lcl.components.navbar.navbarLinkColorHover" />;        //@grayDark;
+@navbarLinkColorActive:           <@teamhub.setting "plugin.lcl.components.navbar.navbarLinkColorActive" />;       //@gray;
+@navbarLinkBackgroundHover:       <@teamhub.setting "plugin.lcl.components.navbar.navbarLinkBackgroundHover" />;   //transparent;
+@navbarLinkBackgroundActive:      <@teamhub.setting "plugin.lcl.components.navbar.navbarLinkBackgroundActive" />;  //darken(@navbarBackground, 5%);
+
+@navbarBrandColor:                <@teamhub.setting "plugin.lcl.components.navbar.navbarBrandColor" />;            //@navbarLinkColor;;
+
+@navbarSearchBackground:          <@teamhub.setting "plugin.lcl.components.navbar.navbarSearchBackground" />;      //lighten(@navbarBackground, 25%);
+@navbarSearchBackgroundFocus:     <@teamhub.setting "plugin.lcl.components.navbar.navbarSearchBackgroundFocus" />; //@white;
+@navbarSearchBorder:              <@teamhub.setting "plugin.lcl.components.navbar.navbarSearchBorder" />;          //darken(@navbarSearchBackground, 30%);
+@navbarSearchPlaceholderColor:    <@teamhub.setting "plugin.lcl.components.navbar.navbarSearchPlaceholderColor" />;//#ccc;
+
+@navbarLogoHeight:                <@teamhub.setting "plugin.lcl.components.navbar.navbarLogoHeight" />;                //50px;
+
+// Inverted navbar
+@navbarInverseBackground:                <@teamhub.setting "plugin.lcl.components.inverseNavbar.navbarInverseBackground" />; //#111111;
+@navbarInverseBackgroundHighlight:       <@teamhub.setting "plugin.lcl.components.inverseNavbar.navbarInverseBackgroundHighlight" />; //#222222;
+@navbarInverseBorder:                    <@teamhub.setting "plugin.lcl.components.inverseNavbar.navbarInverseBorder" />; //#252525;
+
+@navbarInverseText:                      <@teamhub.setting "plugin.lcl.components.inverseNavbar.navbarInverseText" />; //@grayLight;
+@navbarInverseLinkColor:                 <@teamhub.setting "plugin.lcl.components.inverseNavbar.navbarInverseLinkColor" />; //@grayLight;
+@navbarInverseLinkColorHover:            <@teamhub.setting "plugin.lcl.components.inverseNavbar.navbarInverseLinkColorHover" />; //@white;
+@navbarInverseLinkColorActive:           <@teamhub.setting "plugin.lcl.components.inverseNavbar.navbarInverseLinkColorActive" />; //@navbarInverseLinkColorHover;
+@navbarInverseLinkBackgroundHover:       <@teamhub.setting "plugin.lcl.components.inverseNavbar.navbarInverseLinkBackgroundHover" />; //transparent;
+@navbarInverseLinkBackgroundActive:      <@teamhub.setting "plugin.lcl.components.inverseNavbar.navbarInverseLinkBackgroundActive" />; //@navbarInverseBackground;
+
+@navbarInverseSearchBackground:          <@teamhub.setting "plugin.lcl.components.inverseNavbar.navbarInverseSearchBackground" />; //lighten(@navbarInverseBackground, 25%);
+@navbarInverseSearchBackgroundFocus:     <@teamhub.setting "plugin.lcl.components.inverseNavbar.navbarInverseSearchBackgroundFocus" />; //@white;
+@navbarInverseSearchBorder:              <@teamhub.setting "plugin.lcl.components.inverseNavbar.navbarInverseSearchBorder" />; //@navbarInverseBackground;
+@navbarInverseSearchPlaceholderColor:    <@teamhub.setting "plugin.lcl.components.inverseNavbar.navbarInverseSearchPlaceholderColor" />; //#ccc;
+
+@navbarInverseBrandColor:                <@teamhub.setting "plugin.lcl.components.inverseNavbar.navbarInverseBrandColor" />; //@navbarInverseLinkColor;
+
+
+// Pagination
+// -------------------------
+@paginationBackground:                <@teamhub.setting "plugin.lcl.components.pagination.paginationBackground" />; //#fff;
+@paginationBorder:                    <@teamhub.setting "plugin.lcl.components.pagination.paginationBorder" />; //#ddd;
+@paginationActiveBackground:          <@teamhub.setting "plugin.lcl.components.pagination.paginationActiveBackground" />; //#f5f5f5;
+
+
+// Hero unit
+// -------------------------
+@heroUnitBackground:              <@teamhub.setting "plugin.lcl.components.heroUnit.heroUnitBackground" />;   //@grayLighter;
+@heroUnitHeadingColor:            <@teamhub.setting "plugin.lcl.components.heroUnit.heroUnitHeadingColor" />; //inherit;
+@heroUnitLeadColor:               <@teamhub.setting "plugin.lcl.components.heroUnit.heroUnitLeadColor" />;    //inherit;
+
+
+// Form states and alerts
+// -------------------------
+@warningText:             <@teamhub.setting "plugin.lcl.components.messages.warningText" />;      //#c09853;
+@warningBackground:       <@teamhub.setting "plugin.lcl.components.messages.warningBackground" />;//#fcf8e3;
+@warningBorder:           <@teamhub.setting "plugin.lcl.components.messages.warningBorder" />;    //darken(spin(@warningBackground, -10), 3%);
+
+@errorText:               <@teamhub.setting "plugin.lcl.components.messages.errorText" />;        //#b94a48;
+@errorBackground:         <@teamhub.setting "plugin.lcl.components.messages.errorBackground" />;  //#f2dede;
+@errorBorder:             <@teamhub.setting "plugin.lcl.components.messages.errorBorder" />;      //darken(spin(@errorBackground, -10), 3%);
+
+@successText:             <@teamhub.setting "plugin.lcl.components.messages.successText" />;      //#468847;
+@successBackground:       <@teamhub.setting "plugin.lcl.components.messages.successBackground" />;//#dff0d8;
+@successBorder:           <@teamhub.setting "plugin.lcl.components.messages.successBorder" />;    //darken(spin(@successBackground, -10), 5%);
+
+@infoText:                <@teamhub.setting "plugin.lcl.components.messages.infoText" />;         //#3a87ad;
+@infoBackground:          <@teamhub.setting "plugin.lcl.components.messages.infoBackground" />;   //#d9edf7;
+@infoBorder:              <@teamhub.setting "plugin.lcl.components.messages.infoBorder" />;       //darken(spin(@infoBackground, -10), 7%);
+
+
+// Tooltips and popovers
+// -------------------------
+@tooltipColor:            <@teamhub.setting "plugin.lcl.components.tooltips.tooltipColor" />; //#fff;
+@tooltipBackground:       <@teamhub.setting "plugin.lcl.components.tooltips.tooltipBackground" />; //#000;
+@tooltipArrowWidth:       <@teamhub.setting "plugin.lcl.components.tooltips.tooltipArrowWidth" />; //5px;
+@tooltipArrowColor:       <@teamhub.setting "plugin.lcl.components.tooltips.tooltipArrowColor" />; //@tooltipBackground;
+
+@popoverBackground:       <@teamhub.setting "plugin.lcl.components.popovers.popoverBackground" />; //#fff;
+@popoverArrowWidth:       <@teamhub.setting "plugin.lcl.components.popovers.popoverArrowWidth" />; //10px;
+@popoverArrowColor:       <@teamhub.setting "plugin.lcl.components.popovers.popoverArrowColor" />; //#fff;
+@popoverTitleBackground:  <@teamhub.setting "plugin.lcl.components.popovers.popoverTitleBackground" />; //darken(@popoverBackground, 3%);
+
+// Special enhancement for popovers
+@popoverArrowOuterWidth:  <@teamhub.setting "plugin.lcl.components.popovers.popoverArrowOuterWidth" />; //@popoverArrowWidth + 1;
+@popoverArrowOuterColor:  <@teamhub.setting "plugin.lcl.components.popovers.popoverArrowOuterColor" />; //rgba(0,0,0,.25);
+
+
+// GRID
+// --------------------------------------------------
+
+
+// Default 940px grid
+// -------------------------
+@gridColumns:             <@teamhub.setting "plugin.lcl.general.grid.gridColumns" />;      //12;
+@gridColumnWidth:         <@teamhub.setting "plugin.lcl.general.grid.gridColumnsWidth" />; //60px;
+@gridGutterWidth:         <@teamhub.setting "plugin.lcl.general.grid.gridGutterWidth" />;  //20px;
+@gridRowWidth:            <@teamhub.setting "plugin.lcl.general.grid.gridRowWidth" />;     //(@gridColumns * @gridColumnWidth) + (@gridGutterWidth * (@gridColumns - 1));
+
+// 1200px min
+@gridColumnWidth1200:     <@teamhub.setting "plugin.lcl.general.grid.gridColumnWidth1200" />; //70px;
+@gridGutterWidth1200:     <@teamhub.setting "plugin.lcl.general.grid.gridGutterWidth1200" />; //30px;
+@gridRowWidth1200:        <@teamhub.setting "plugin.lcl.general.grid.gridRowWidth1200"    />; //(@gridColumns * @gridColumnWidth1200) + (@gridGutterWidth1200 * (@gridColumns - 1));
+
+// 768px-979px
+@gridColumnWidth768:      <@teamhub.setting "plugin.lcl.general.grid.gridColumnWidth768"  />; //42px;
+@gridGutterWidth768:      <@teamhub.setting "plugin.lcl.general.grid.gridGutterWidth768"  />; //20px;
+@gridRowWidth768:         <@teamhub.setting "plugin.lcl.general.grid.gridRowWidth768"     />; //(@gridColumns * @gridColumnWidth768) + (@gridGutterWidth768 * (@gridColumns - 1));
+
+
+// Fluid grid
+// -------------------------
+@fluidGridColumnWidth:    <@teamhub.setting "plugin.lcl.general.fluidGrid.fluidGridColumnWidth" />;  //percentage(@gridColumnWidth/@gridRowWidth);
+@fluidGridGutterWidth:    <@teamhub.setting "plugin.lcl.general.fluidGrid.fluidGridGutterWidth" />;  //percentage(@gridGutterWidth/@gridRowWidth);
+
+// 1200px min
+@fluidGridColumnWidth1200:     <@teamhub.setting "plugin.lcl.general.fluidGrid.fluidGridColumnWidth1200" />; //percentage(@gridColumnWidth1200/@gridRowWidth1200);
+@fluidGridGutterWidth1200:     <@teamhub.setting "plugin.lcl.general.fluidGrid.fluidGridGutterWidth1200" />; //percentage(@gridGutterWidth1200/@gridRowWidth1200);
+
+// 768px-979px
+@fluidGridColumnWidth768:      <@teamhub.setting "plugin.lcl.general.fluidGrid.fluidGridColumnWidth768"  />; //percentage(@gridColumnWidth768/@gridRowWidth768);
+@fluidGridGutterWidth768:      <@teamhub.setting "plugin.lcl.general.fluidGrid.fluidGridGutterWidth768"  />; //percentage(@gridGutterWidth768/@gridRowWidth768);
+
+
+//Answerhub specific
+//-----------------------------------------------
+
+//Tags
+//-------------------------------
+@tagBackground:           <@teamhub.setting "plugin.lcl.components.tags.tagBackground" />;      //lighten(@grayLight, 20%);
+@tagBackgroundHover:      <@teamhub.setting "plugin.lcl.components.tags.tagBackgroundHover" />; //@gray;
+
+//TeamHub general
+//-------------------------------
+@postHeaderBackground:    <@teamhub.setting "plugin.lcl.components.postHeader.postHeaderBackground" />; //@white;
+
+//Extra section
+//-------------------------------
+@extraBackground:         <@teamhub.setting "plugin.lcl.components.extra.extraBackground" />;      //#1A1A1A;
+@extraColor:              <@teamhub.setting "plugin.lcl.components.extra.extraColor" />;           //#BBB;
+@extraLinkColor:          <@teamhub.setting "plugin.lcl.components.extra.extraLinkColor" />;        //#666;
+
+//Footer
+//-------------------------------
+@footerLinkColor:         <@teamhub.setting "plugin.lcl.components.footer.footerLinkColor" />;       //#999999;
+@footerColor:             <@teamhub.setting "plugin.lcl.components.footer.footerColor" />;           //#999999;
+@footerBackground:        <@teamhub.setting "plugin.lcl.components.footer.footerBackground" />;      //#111111
+
+//Widgets
+//-------------------------------
+@widgetHeaderBackground:           <@teamhub.setting "plugin.lcl.components.widgets.widgetHeaderBackground" />;         //#efefef;
+@widgetHeaderBackgroundHighlight:  <@teamhub.setting "plugin.lcl.components.widgets.widgetHeaderBackgroundHighlight" />;//#fafafa;
+@widgetHeaderBorder:               <@teamhub.setting "plugin.lcl.components.widgets.widgetHeaderBorder" />;             //#D5D5D5;
+@widgetHeaderColor:                <@teamhub.setting "plugin.lcl.components.widgets.widgetHeaderColor" />;              //#555555;
+@widgetHeaderIconColor:            <@teamhub.setting "plugin.lcl.components.widgets.widgetHeaderIconColor" />;          //#555555;
+@widgetBorder:                     <@teamhub.setting "plugin.lcl.components.widgets.widgetBorder" />;                   //#D5D5D5;
+@widgetContentBackground:          <@teamhub.setting "plugin.lcl.components.widgets.widgetContentBackground" />;        //#FFF;
+
+//Tables
+//-------------------------------
+
+@tableHeaderBackground:            <@teamhub.setting "plugin.lcl.components.tables.tableHeaderBackground" />;          //#E9E9E9;
+@tableHeaderBackgroundHighlight:   <@teamhub.setting "plugin.lcl.components.tables.tableHeaderBackgroundHighlight" />; //#FAFAFA
+@tableHeaderColor:                 <@teamhub.setting "plugin.lcl.components.tables.tableHeaderColor" />;               //#444444
+
+//Account container
+//-------------------------------
+@accountContainerBackground:       <@teamhub.setting "plugin.lcl.general.loginAndRegister.accountContainerBackground" />;     //#f9f9f9
+@accountContainerBorder:           <@teamhub.setting "plugin.lcl.general.loginAndRegister.accountContainerBorder" />;         //#d5d5d5
+@accountContainerH1Color:          <@teamhub.setting "plugin.lcl.general.loginAndRegister.accountContainerH1Color" />;        //#f90;
+@registerH1:                       <@teamhub.setting "plugin.lcl.general.loginAndRegister.registerH1" />;                     //#444;
+
+
+

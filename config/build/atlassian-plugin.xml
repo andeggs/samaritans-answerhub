@@ -1,0 +1,379 @@
+<atlassian-plugin key="dzone.dzone-thub-theme-config" name="TeamHub Theme Config" plugins-version="2">
+    <plugin-info>
+        <description>TeamHub Theme Config</description>
+        <version>1.0-snapshot</version>
+        <vendor name="DZone, Inc." url="http://www.dzone.com"/>
+    </plugin-info>
+
+    <interceptor key="layoutInterceptor" class="com.teamhub.themes.ahub.LayoutInterceptor"
+                 name="layout interceptor" />
+
+    <interceptor key="indexInterceptor" class="com.teamhub.themes.ahub.interceptors.IndexInterceptor"
+                 name="index interceptor" />
+
+    <mvc key="themeSettingsController" class="com.teamhub.themes.ahub.admin.ThemeSettingsController" name="Theme Settings Controller" />
+    <mvc key="LESSController" class="com.teamhub.themes.ahub.LESSController" name="Compiles, stores, and outputs LESS as css" />
+
+    <resource type="i18n" name="i18n" location="thub-config" />
+
+    <settings key="layout-config-settings" prefix="lc">
+
+        <setting name="showMainNavbar"      class="bool"    value="true" />
+        <setting name="showFooter"          class="bool"    value="true" />
+        <setting name="showMainContent"     class="bool"    value="true" />
+        <setting name="showSidebarOne"      class="bool"    value="false" />
+        <setting name="showSidebarTwo"      class="bool"    value="true" />
+        <setting name="fullWidthIndex"      class="bool"    value="false" />
+
+        <setting name="mainContentWidth"    class="int"     value="8" />
+        <setting name="sidebarOneWidth"     class="int"     value="0" />
+        <setting name="sidebarTwoWidth"     class="int"     value="4" />
+
+        <setting name="midSectionOrder"     value="mainContent,sidebarOne,sidebarTwo" />
+
+        <setting name="indexType" value="question_list" />
+
+    </settings>
+
+    <!--Less settings-->
+    <settings key="layout-config-settings-less" prefix="lcl">
+        <setting name="baseColors.grays.black"          class="color" value="#000" />
+        <setting name="baseColors.grays.greyDarker"     class="color" value="#222" />
+        <setting name="baseColors.grays.grayDark"       class="color" value="#333" />
+        <setting name="baseColors.grays.gray"           class="color" value="#555" />
+        <setting name="baseColors.grays.grayLight"      class="color" value="#999" />
+        <setting name="baseColors.grays.grayLighter"    class="color" value="#eee" />
+        <setting name="baseColors.grays.white"          class="color" value="#fff" />
+
+        <setting name="baseColors.accentColors.blue"           class="color" value="#3B73B9" />
+        <setting name="baseColors.accentColors.blueDark"       class="color" value="#0064cd" />
+        <setting name="baseColors.accentColors.green"          class="color" value="#46a546" />
+        <setting name="baseColors.accentColors.red"            class="color" value="#9d261d" />
+        <setting name="baseColors.accentColors.yellow"         class="color" value="#ffc40d" />
+        <setting name="baseColors.accentColors.orange"         class="color" value="#f89406" />
+        <setting name="baseColors.accentColors.pink"           class="color" value="#c3325f" />
+        <setting name="baseColors.accentColors.purple"         class="color" value="#7a43b6" />
+
+        <setting name="general.body.bodyBackground"         class="color" value="#e9e8dd" />
+        <setting name="text.general.textColor"              class="color" value="@grayDark" />
+
+        <setting name="text.links.linkColor"              class="color" value="@blue" />
+        <setting name="text.links.linkColorHover"         class="color" value="@linkColor" />
+
+        <setting name="text.fonts.sansFontFamily"         value="'Open Sans','Helvetica Neue', Helvetica, Arial, sans-serif" />
+        <setting name="text.fonts.serifFontFamily"        value="Georgia, 'Times New Roman', Times, serif" />
+        <setting name="text.fonts.monoFontFamily"         value="Menlo, Monaco, Consolas, 'Courier New', monospace" />
+
+        <setting name="text.fonts.baseFontSize"           value="14px" />
+        <setting name="text.fonts.baseFontFamily"         value="@sansFontFamily" />
+        <setting name="text.fonts.baseLineHeight"         value="20px" />
+        <setting name="text.fonts.altFontFamily"          value="@serifFontFamily" />
+
+        <setting name="text.fonts.headingsFontFamily"     value="inherit" />
+        <setting name="text.fonts.headingsFontWeight"     value="bold" />
+        <setting name="text.fonts.headingsColor"          value="inherit" />
+
+        <setting name="components.tables.tableBackground"        class="color" value="transparent" />
+        <setting name="components.tables.tableBackgroundAccent"  class="color" value="#f9f9f9" />
+        <setting name="components.tables.tableBackgroundHover"   class="color" value="#f5f5f5" />
+        <setting name="components.tables.tableBorder"            class="color" value="#ddd" />
+
+        <setting name="inputs.buttons.btnBackground"          class="color" value="@white" />
+        <setting name="inputs.buttons.btnBackgroundHighlight" class="color" value="darken(@white, 10%)" />
+        <setting name="inputs.buttons.btnBorder"              class="color" value="#BBB" />
+
+        <setting name="inputs.buttons.btnPrimaryBackground"          class="color" value="@linkColor" />
+        <setting name="inputs.buttons.btnPrimaryBackgroundHighlight" class="color" value="spin(@btnPrimaryBackground, 15%)" />
+
+        <setting name="inputs.buttons.btnInfoBackground"             class="color" value="#5bc0de" />
+        <setting name="inputs.buttons.btnInfoBackgroundHighlight"    class="color" value="#2f96b4" />
+
+        <setting name="inputs.buttons.btnSuccessBackground"          class="color" value="#62c462" />
+        <setting name="inputs.buttons.btnSuccessBackgroundHighlight" class="color" value="#51a351" />
+
+        <setting name="inputs.buttons.btnWarningBackground"          class="color" value="lighten(@orange, 15%)" />
+        <setting name="inputs.buttons.btnWarningBackgroundHighlight" class="color" value="@orange" />
+
+        <setting name="inputs.buttons.btnDangerBackground"           class="color" value="#ee5f5b" />
+        <setting name="inputs.buttons.btnDangerBachgroundHighlight"  class="color" value="#bd362f" />
+
+        <setting name="inputs.buttons.btnInverseBackground"          class="color" value="#444" />
+        <setting name="inputs.buttons.btnInverseBackgroundHighlight" class="color" value="@grayDarker" />
+
+        <setting name="inputs.inputs.inputBackground"               class="color" value="@white" />
+        <setting name="inputs.inputs.inputBorder"                   class="color" value="#ccc" />
+        <setting name="inputs.inputs.inputBorderRadius"             value="3px" />
+        <setting name="inputs.inputs.inputDisabledBackground"       class="color" value="@grayLighter" />
+        <setting name="inputs.inputs.formActionsBackground"         class="color" value="#f5f5f5" />
+
+        <setting name="inputs.dropdowns.dropdownBackground"            class="color" value="@white" />
+        <setting name="inputs.dropdowns.dropdownBorder"                class="color" value="rgba(0,0,0,.2)" />
+        <setting name="inputs.dropdowns.dropdownDividerTop"            class="color" value="#e5e5e5" />
+        <setting name="inputs.dropdowns.dropdownDividerBottom"         class="color" value="@white" />
+
+        <setting name="inputs.dropdowns.dropdownLinkColor"             class="color" value="@grayDark" />
+        <setting name="inputs.dropdowns.dropdownLinkColorHover"        class="color" value="@white" />
+
+        <setting name="inputs.dropdowns.dropdownLinkBackgroundActive"  class="color" value="@linkColor" />
+        <setting name="inputs.dropdowns.dropdownLinkBackgroundHover"   class="color" value="@dropdownLinkBackgroundActive" />
+
+
+        <setting name="general.zIndices.zindexDropdown"        value="1000" />
+        <setting name="general.zIndices.zindexPopover"         value="1010" />
+        <setting name="general.zIndices.zindexTooltip"         value="1020" />
+        <setting name="general.zIndices.zindexFixedNavbar"     value="1030" />
+        <setting name="general.zIndices.zindexModelBackdrop"   value="1040" />
+        <setting name="general.zIndices.zindexModel"           value="1050" />
+
+        <setting name="general.icons.iconSpritePath"        value="'../img/glyphicons-halflings.png'" />
+        <setting name="general.icons.iconWhiteSpritePath"   value="'../img/glyphicons-halflings-white.png'" />
+
+        <setting name="inputs.inputs.placeholderText"       class="color" value="@grayLight" />
+
+        <setting name="components.general.hrBorder"         class="color" value="@grayLighter" />
+
+        <setting name="components.general.horizontalComponentOffset"      value="180px" />
+
+        <setting name="components.general.wellBackground"   class="color" value="#f5f5f5" />
+
+        <setting name="components.navbar.navbarCollapseWidth"             value="979px" />
+
+        <setting name="components.navbar.navbarHeight"              value="40px" />
+        <setting name="components.navbar.navbarLogoHeight"          value="50px" />
+        <setting name="components.navbar.navbarBackground"          class="color" value="darken(@navbarBackgroundHighlight, 5%)" />
+        <setting name="components.navbar.navbarBackgroundHighlight" class="color" value="#ffffff" />
+        <setting name="components.navbar.navbarBorder"              class="color" value="darken(@navbarBackground, 12%)" />
+
+        <setting name="components.navbar.navbarText"                   class="color" value="@grayLight" />
+        <setting name="components.navbar.navbarLinkColor"              class="color" value="@grayLight" />
+        <setting name="components.navbar.navbarLinkColorHover"         class="color" value="@grayDark" />
+        <setting name="components.navbar.navbarLinkColorActive"        class="color" value="@navbarLinkColorHover" />
+        <setting name="components.navbar.navbarLinkBackgroundHover"    class="color" value="transparent" />
+        <setting name="components.navbar.navbarLinkBackgroundActive"   class="color" value="@navbarBackground" />
+
+        <setting name="components.navbar.navbarSearchBackground"       class="color" value="lighten(@navbarBackground, 25%)" />
+        <setting name="components.navbar.navbarSearchBackgroundFocus"  class="color" value="@white" />
+        <setting name="components.navbar.navbarSearchBorder"           class="color" value="darken(@navbarSearchBackground, 30%)" />
+        <setting name="components.navbar.navbarSearchPlaceholderColor" class="color" value="#ccc" />
+        <setting name="components.navbar.navbarBrandColor"             class="color" value="@navbarLinkColor" />
+
+        <setting name="components.inverseNavbar.navbarInverseBackground"          class="color" value="#111111" />
+        <setting name="components.inverseNavbar.navbarInverseBackgroundHighlight" class="color" value="#222222" />
+        <setting name="components.inverseNavbar.navbarInverseBorder"              class="color" value="#252525" />
+
+        <setting name="components.inverseNavbar.navbarInverseText"                class="color" value="@grayLight" />
+        <setting name="components.inverseNavbar.navbarInverseLinkColor"           class="color" value="@grayLight" />
+        <setting name="components.inverseNavbar.navbarInverseLinkColorHover"      class="color" value="@white" />
+        <setting name="components.inverseNavbar.navbarInverseLinkColorActive"     class="color" value="navbarInverseLinkColorHover" />
+        <setting name="components.inverseNavbar.navbarInverseLinkBackgroundHover" class="color" value="transparent" />
+        <setting name="components.inverseNavbar.navbarInverseLinkBackgroundActive" class="color" value="@navbarInverseBackground" />
+
+        <setting name="components.inverseNavbar.navbarInverseSearchBackground"    class="color" value="lighten(@navbarInverseBackground, 25%)" />
+        <setting name="components.inverseNavbar.navbarInverseSearchBackgroundFocus" class="color" value="@white" />
+        <setting name="components.inverseNavbar.navbarInverseSearchBorder"        class="color" value="@navbarInverseBackground" />
+        <setting name="components.inverseNavbar.navbarInverseSearchPlaceholderColor" class="color" value="#ccc" />
+
+        <setting name="components.inverseNavbar.navbarInverseBrandColor"          class="color" value="@navbarInverseLinkColor" />
+
+        <setting name="components.pagination.paginationBackground"       class="color" value="#fff" />
+        <setting name="components.pagination.paginationBorder"           class="color" value="#ddd" />
+        <setting name="components.pagination.paginationActiveBackground" class="color" value="#f5f5f5" />
+
+        <setting name="components.heroUnit.heroUnitBackground"           class="color" value="@grayLighter" />
+        <setting name="components.heroUnit.heroUnitHeadingColor"         class="color" value="inherit" />
+        <setting name="components.heroUnit.heroUnitLeadColor"            class="color" value="inherit" />
+
+        <setting name="components.messages.warningText"                  class="color" value="#c09853" />
+        <setting name="components.messages.warningBackground"            class="color" value="#fcf8e3" />
+        <setting name="components.messages.warningBorder"                class="color" value="darken(spin(@warningBackground, -10), 3%)" />
+
+        <setting name="components.messages.errorText"                    class="color" value="#b94a48" />
+        <setting name="components.messages.errorBackground"              class="color" value="#f2dede" />
+        <setting name="components.messages.errorBorder"                  class="color" value="darken(spin(@errorBackground, -10), 3%)" />
+
+        <setting name="components.messages.successText"                  class="color" value="#468847" />
+        <setting name="components.messages.successBackground"            class="color" value="#dff0d8" />
+        <setting name="components.messages.successBorder"                class="color" value="darken(spin(@successBackground, -10), 5%)" />
+
+        <setting name="components.messages.infoText"                     class="color" value="#3a87ad" />
+        <setting name="components.messages.infoBackground"               class="color" value="#d9edf7" />
+        <setting name="components.messages.infoBorder"                   class="color" value="darken(spin(@infoBackground, -10), 7%)" />
+
+        <setting name="components.tooltips.tooltipColor"                 class="color" value="#fff" />
+        <setting name="components.tooltips.tooltipBackground"            class="color" value="#000" />
+        <setting name="components.tooltips.tooltipArrowWidth"                          value="5px" />
+        <setting name="components.tooltips.tooltipArrowColor"            class="color" value="@tooltipBackground" />
+
+        <setting name="components.popovers.popoverBackground"            class="color" value="#fff" />
+        <setting name="components.popovers.popoverArrowWidth"                          value="10px" />
+        <setting name="components.popovers.popoverArrowColor"            class="color" value="#fff" />
+        <setting name="components.popovers.popoverTitleBackground"       class="color" value="darken(@popoverBackground, 3%)" />
+
+        <setting name="components.popovers.popoverArrowOuterWidth"       class="color" value="@popoverArrowWidth + 1" />
+        <setting name="components.popovers.popoverArrowOuterColor"       class="color" value="rgba(0,0,0,.25)" />
+
+        <setting name="general.grid.gridColumns"                  value="12" />
+        <setting name="general.grid.gridColumnsWidth"             value="60px" />
+        <setting name="general.grid.gridGutterWidth"              value="20px" />
+        <setting name="general.grid.gridRowWidth"                 value="(@gridColumns * @gridColumnWidth) + (@gridGutterWidth * (@gridColumns - 1))" />
+
+        <setting name="general.grid.gridColumnWidth1200"          value="70px" />
+        <setting name="general.grid.gridGutterWidth1200"          value="30px" />
+        <setting name="general.grid.gridRowWidth1200"             value="(@gridColumns * @gridColumnWidth1200) + (@gridGutterWidth1200 * (@gridColumns - 1))" />
+
+        <setting name="general.grid.gridColumnWidth768"           value="42px" />
+        <setting name="general.grid.gridGutterWidth768"           value="20px" />
+        <setting name="general.grid.gridRowWidth768"              value="(@gridColumns * @gridColumnWidth768) + (@gridGutterWidth768 * (@gridColumns - 1))" />
+
+        <setting name="general.fluidGrid.fluidGridColumnWidth"         value="percentage(@gridColumnWidth/@gridRowWidth)" />
+        <setting name="general.fluidGrid.fluidGridGutterWidth"         value="percentage(@gridGutterWidth/@gridRowWidth)" />
+
+        <setting name="general.fluidGrid.fluidGridColumnWidth1200"     value="percentage(@gridColumnWidth1200/@gridRowWidth1200)" />
+        <setting name="general.fluidGrid.fluidGridGutterWidth1200"     value="percentage(@gridGutterWidth1200/@gridRowWidth1200)" />
+
+        <setting name="general.fluidGrid.fluidGridColumnWidth768"      value="percentage(@gridColumnWidth768/@gridRowWidth768)" />
+        <setting name="general.fluidGrid.fluidGridGutterWidth768"      value="percentage(@gridGutterWidth768/@gridRowWidth768)" />
+
+        <setting name="components.tags.tagBackground"                class="color" value="lighten(@grayLight, 20%)" />
+        <setting name="components.tags.tagBackgroundHover"           class="color" value="@gray" />
+
+        <!--ahub settings-->
+
+        <!--post-header-->
+        <setting name="components.postHeader.postHeaderBackground"         class="color" value="@white" />
+
+        <!--extra-section-->
+        <setting name="components.extra.extraBackground"              class="color" value="#1A1A1A" />
+        <setting name="components.extra.extraColor"                   class="color" value="#BBB" />
+        <setting name="components.extra.extraLinkColor"               class="color" value="#666" />
+
+        <!--footer-->
+        <setting name="components.footer.footerLinkColor"              class="color" value="#999999" />
+        <setting name="components.footer.footerColor"                  class="color" value="#999999" />
+        <setting name="components.footer.footerBackground"             class="color" value="#111111" />
+
+        <!--widgets-->
+        <setting name="components.widgets.widgetHeaderBackground"       class="color" value="#efefef" />
+        <setting name="components.widgets.widgetHeaderBackgroundHighlight" class="color" value="#fafafa" />
+        <setting name="components.widgets.widgetHeaderBorder"              class="color" value="#D5D5D5" />
+        <setting name="components.widgets.widgetHeaderColor"               class="color" value="#555555" />
+        <setting name="components.widgets.widgetHeaderIconColor"           class="color" value="#555555" />
+        <setting name="components.widgets.widgetBorder"                    class="color" value="#D5D5D5" />
+        <setting name="components.widgets.widgetContentBackground"         class="color" value="#FFFFFF" />
+
+        <!--Tables-->
+        <setting name="components.tables.tableHeaderBackground"           class="color" value="#E9E9E9" />
+        <setting name="components.tables.tableHeaderBackgroundHighlight"  class="color" value="#FAFAFA" />
+        <setting name="components.tables.tableHeaderColor"                class="color" value="#444444" />
+
+        <!--Login/register-->
+        <setting name="general.loginAndRegister.accountContainerBackground"      class="color" value="#f9f9f9" />
+        <setting name="general.loginAndRegister.accountContainerBorder"          class="color" value="#d5d5d5" />
+        <setting name="general.loginAndRegister.accountContainerH1Color"         class="color" value="#f90" />
+        <setting name="general.loginAndRegister.registerH1"                      class="color" value="#444" />
+
+    </settings>
+    <!--end Less settings-->
+
+
+    <!--<widget key="ahubSubNav" location="ahub.subnav" weight="25">-->
+        <!--<context-provider class="com.answerhub.themes.ahub.widgets.SubnavContext"/>-->
+        <!--<resource name="view" type="freemarker" location="widgets/subnav.ftl"/>-->
+    <!--</widget>-->
+    <!--<widget key="ahubAskWidget" location="ahub.preMainContent.index" weight="25">
+        <context-provider class="com.answerhub.themes.ahub.widgets.AskContext"/>
+        <resource name="view" type="freemarker" location="templates/ask.ftl"/>
+    </widget>-->
+
+    <widget key="ahubSidePopularTopics" location="ahub.indexSidebar" weight="25">
+        <context-provider class="com.teamhub.themes.ahub.widgets.AskContext"/>
+        <resource name="view" type="freemarker" location="widgets/popular_topics.ftl"/>
+    </widget>
+
+    <widget key="ahubSideRecentBadges" location="ahub.indexSidebar" weight="30">
+        <context-provider class="com.teamhub.themes.ahub.widgets.RecentAwardsContext"/>
+        <resource name="view" type="freemarker" location="widgets/recent_badges.ftl"/>
+    </widget>
+
+    <widget key="ahubQuestionFollowWidget" location="ahub.question.sidebar" weight="10">
+        <context-provider class="com.teamhub.themes.ahub.widgets.AskContext"/>
+        <resource name="view" type="freemarker" location="widgets/follow.ftl"/>
+    </widget>
+
+   <!-- <widget key="ahubQuestionActionsWidget" location="ahub.question.sidebar" weight="3">
+        <context-provider class="com.teamhub.themes.ahub.widgets.AskContext"/>
+        <resource name="view" type="freemarker" location="widgets/question_actions.ftl"/>
+    </widget>-->
+
+    <widget key="ahubSpaceFollowWidget" location="ahub.indexSidebar" weight="10">
+        <context-provider class="com.teamhub.themes.ahub.widgets.AskContext"/>
+        <resource name="view" type="freemarker" location="widgets/follow.ftl"/>
+    </widget>
+
+    <widget key="ahubListHeader" location="ahub.preMainContent" weight="10">
+        <context-provider class="com.teamhub.themes.ahub.widgets.AskContext"/>
+        <resource name="view" type="freemarker" location="widgets/list_header.ftl"/>
+    </widget>
+
+<!--
+    <widget key="ahubNotifyWidget" location="ahub.indexSidebar" weight="30">
+        <resource name="view" type="freemarker" location="templates/notify.ftl"/>
+    </widget>-->
+
+    <widget key="ahubQuickTips" location="ahub.askSidebar" weight="35">
+        <resource name="view" type="freemarker" location="widgets/quick-tips.ftl"/>
+    </widget>
+
+    <!--<widget key="ahubQuestionHeader" location="ahub.question.header" weight="35">-->
+        <!--<context-provider class="com.answerhub.themes.ahub.widgets.QuestionContext"/>-->
+        <!--<resource name="view" type="freemarker" location="widgets/question_header.ftl"/>-->
+    <!--</widget>-->
+    <widget key="ahubRelatedQuestions" location="ahub.question.sidebar" weight="15">
+        <context-provider class="com.teamhub.themes.ahub.widgets.QuestionContext"/>
+        <resource name="view" type="freemarker" location="widgets/related_questions.ftl"/>
+    </widget>
+    <widget key="ahubAskToAnswerWidget" location="ahub.question.sidebar" weight="20">
+        <context-provider class="com.teamhub.themes.ahub.widgets.QuestionContext"/>
+        <resource name="view" type="freemarker" location="widgets/ask_to_answer.ftl"/>
+    </widget>
+
+<!--
+    <widget key="ahubQuestionNotifyWidget" location="ahub.question.sidebar" weight="15">
+        <resource name="view" type="freemarker" location="templates/notify.ftl"/>
+    </widget>-->
+
+    <!--<widget key="ahubTopicsInSpace" location="ahub.question.sidebar" weight="20">
+        <context-provider class="com.teamhub.themes.ahub.widgets.AskContext"/>
+        <resource name="view" type="freemarker" location="widgets/popular_topics.ftl"/>
+    </widget>-->
+
+    <widget key="topicStatsWidget" location="ahub.topic.sidebar" weight="25">
+        <context-provider class="com.teamhub.themes.ahub.widgets.TopicContext"/>
+        <resource name="view" type="freemarker" location="widgets/topic_stats.ftl"/>
+    </widget>
+
+    <widget key="topicExperts" location="ahub.topic.sidebar" weight="30">
+        <context-provider class="com.teamhub.themes.ahub.widgets.TopicExperts"/>
+        <resource name="view" type="freemarker" location="widgets/topic_experts.ftl"/>
+    </widget>
+
+    <widget key="topicRelatedTopicsWidget" location="ahub.topic.sidebar" weight="35">
+        <context-provider class="com.teamhub.themes.ahub.widgets.TopicContext"/>
+        <resource name="view" type="freemarker" location="widgets/related_topics.ftl"/>
+    </widget>
+
+    <widget key="topicFollowersWidget" location="ahub.topic.postMainContent" weight="30">
+        <context-provider class="com.teamhub.themes.ahub.widgets.TopicContext"/>
+        <resource name="view" type="freemarker" location="widgets/recent_followers.ftl"/>
+    </widget>
+
+    <widget key="ahubSiteNotifications" location="ahub.indexSidebar" weight="0">
+        <resource name="view" type="freemarker" location="widgets/site_notifications.ftl"/>
+    </widget>
+
+    <widget key="advancedSearch" location="ahub.searchSidebar" weight="0">
+        <context-provider class="com.teamhub.themes.ahub.widgets.SearchContext"/>
+        <resource name="view" type="freemarker" location="widgets/advanced_search.ftl"/>
+    </widget>
+
+</atlassian-plugin>
